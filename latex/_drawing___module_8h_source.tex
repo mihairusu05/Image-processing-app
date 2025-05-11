@@ -1,0 +1,71 @@
+\doxysection{Drawing\+\_\+\+Module.\+h}
+\hypertarget{_drawing___module_8h_source}{}\label{_drawing___module_8h_source}\index{D:/Info/School/OOP-\/Sem2/Extra\_credit3/Drawing\_Module.h@{D:/Info/School/OOP-\/Sem2/Extra\_credit3/Drawing\_Module.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00004\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{class\ }Point\ \{}
+\DoxyCodeLine{00007\ public\ :}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_x;}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_y;}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \ \ \ \ Point()\ :\ m\_x(0),\ m\_y(0)\ \{\}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \ \ \ \ Point\ (\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y)\ :\ m\_x(x),\ m\_y(y)\ \{\}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{friend}\ ostream\&\ operator<<(ostream\&\ os,\ \textcolor{keyword}{const}\ Point\&\ p1)\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ os\ <<\ \textcolor{stringliteral}{"{}("{}}\ <<\ p1.m\_x\ <<\ \textcolor{stringliteral}{"{},\ "{}}\ <<\ p1.m\_y\ <<\ \textcolor{stringliteral}{"{})"{}};}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ os;}
+\DoxyCodeLine{00018\ \ \ \ \ \}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{friend}\ istream\&\ operator\ >>(istream\&\ is,\ Point\&\ p1)\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ is\ >>\ p1.m\_x\ >>\ p1.m\_y;}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ is;}
+\DoxyCodeLine{00023\ \ \ \ \ \}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{class\ }Rectangle\ \{}
+\DoxyCodeLine{00029\ public\ :}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_x,\ m\_y;}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ m\_width,\ m\_height;}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ Rectangle()\ :\ m\_x(0),\ m\_y(0),\ m\_width(0),\ m\_height(0)\ \{\}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ Rectangle(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height)\ :\ m\_x(x),\ m\_y(y),\ m\_width(width),\ m\_height(height)\ \{\}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ Rectangle(\mbox{\hyperlink{class_point}{Point}}\ p1,\ \mbox{\hyperlink{class_point}{Point}}\ p2)\ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ m\_x\ =\ p1.m\_x;}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ m\_y\ =\ p1.m\_y;}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ m\_width\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\textcolor{keyword}{>}(p2.m\_x\ -\/\ p1.m\_x);}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ m\_height\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\textcolor{keyword}{>}(p2.m\_y\ -\/\ p1.m\_y);}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{friend}\ ostream\&\ operator<<(ostream\&\ os,\ \textcolor{keyword}{const}\ Rectangle\&\ r)\ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ os\ <<\ \textcolor{stringliteral}{"{}("{}}\ <<\ r.m\_x\ <<\ \textcolor{stringliteral}{"{},\ "{}}\ <<\ r.m\_y\ <<\ \textcolor{stringliteral}{"{},\ "{}}\ <<\ r.m\_width\ <<\ \textcolor{stringliteral}{"{},\ "{}}\ <<\ r.m\_height\ <<\ \textcolor{stringliteral}{"{})"{}};}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ os;}
+\DoxyCodeLine{00051\ \ \ \ \ \}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keyword}{friend}\ istream\&\ operator>>(istream\&\ is,\ Rectangle\&\ r)\ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ is\ >>\ r.m\_x\ >>\ r.m\_y\ >>\ r.m\_width\ >>\ r.m\_height;}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ is;}
+\DoxyCodeLine{00056\ \ \ \ \ \}}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ Rectangle\ operator+(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_point}{Point}}\&\ p)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Rectangle(m\_x\ +\ p.m\_x,\ m\_y\ +\ p.m\_y,\ m\_width,\ m\_height);}
+\DoxyCodeLine{00060\ \ \ \ \ \}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ Rectangle\ operator-\/(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_point}{Point}}\&\ p)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Rectangle(m\_x\ -\/\ p.m\_x,\ m\_y\ -\/\ p.m\_y,\ m\_width,\ m\_height);}
+\DoxyCodeLine{00064\ \ \ \ \ \}}
+\DoxyCodeLine{00065\ \};}
+
+\end{DoxyCode}
